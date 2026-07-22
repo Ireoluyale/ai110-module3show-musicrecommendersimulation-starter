@@ -21,6 +21,10 @@ Explain your design in plain language.
 
 Some prompts to answer:
 
+Real-world recommendation systems like Spotify and YouTube predict what a listener will enjoy next by combining two big ideas: collaborative filtering, which looks at the behavior of millions of other users to find people with similar taste ("listeners like you also loved this"), and content-based filtering, which compares the measurable attributes of songs themselves—tempo, energy, mood, genre—to what a user already likes. They feed on enormous streams of data, especially implicit signals like plays, skips, and completion rates, and run them through a two-stage pipeline that first scores each candidate track and then ranks the results into an ordered, diverse playlist. My version prioritizes a simple, transparent content-based approach: it represents each song as a vector of normalized numerical features (energy, valence, danceability, acousticness, tempo) plus categorical tags (genre and mood), scores every song by how closely it matches the user's preferences rather than by raw magnitude, and then ranks those scores to return the top matches. We deliberately favor explainability and control—weighting genre above mood and closeness above popularity—over the scale and complexity of a full collaborative-filtering system, so we can clearly see why each song was recommended.
+
+
+
 - What features does each `Song` use in your system
   - For example: genre, mood, energy, tempo
 - What information does your `UserProfile` store
